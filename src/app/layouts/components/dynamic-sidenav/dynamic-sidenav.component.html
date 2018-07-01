@@ -1,0 +1,34 @@
+<div fxLayout="column" fxFlexFill>
+  <mat-toolbar class="portal-side-menu-top-toolbar">
+    <mat-toolbar-row fxLayout="row">
+      <img class="portal-toolbar-brand" src="assets/images/oxygenna.png" alt="Portal">
+      <span class="portal-toolbar-brand-text" i18n>Portal</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="portal-sidnav-menu portal-hide-scrollbars" fxFlex="nogrow noshrink">
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/customer" routerLinkActive="portal-menu--active">
+        <mat-icon matListIcon>palette</mat-icon>
+        <h3 matLine>Dashboard</h3>
+      </a>
+      <a mat-list-item routerLink="/customer/projects" routerLinkActive="portal-menu--active">
+        <mat-icon matListIcon>event_note</mat-icon>
+        <h3 matLine>Projects</h3>
+      </a>
+      <a mat-list-item routerLink="/customer/messages" routerLinkActive="portal-menu--active">
+        <mat-icon matListIcon>email</mat-icon>
+        <h3 matLine>Messages</h3>
+      </a>
+    </mat-nav-list>
+
+  </div>
+  <mat-toolbar>
+    <mat-toolbar-row fxLayout="row">
+      <span fxFlex></span>
+      <a mat-icon-button (click)="sidenav.close()">
+        <mat-icon>chevron_left</mat-icon>
+      </a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

@@ -1,0 +1,33 @@
+<mat-toolbar class="portal-toolbar mat-elevation-z6" [ngClass]="{ 'portal-transparent-toolbar': transparent }">
+  <mat-toolbar-row>
+    <button *ngIf="showMenuIcon()" mat-icon-button (click)="leftSidenav.open()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span *ngIf="false" portalHeaderTitle></span>
+    <span fxFlex></span>
+    <portal-theme-switcher-menu *ngIf="false" fxHide fxShow.gt-sm></portal-theme-switcher-menu>
+    <portal-layout-switcher-menu *ngIf="false" fxHide fxShow.gt-sm></portal-layout-switcher-menu>
+
+    <mat-nav-list class="inline-nav">
+        <a mat-list-item routerLink="/customer" routerLinkActive="portal-menu--active">
+          <mat-icon matListIcon>palette</mat-icon>
+          Dashboard
+        </a>
+        <a mat-list-item routerLink="/customer/projects" routerLinkActive="portal-menu--active">
+          <mat-icon matListIcon>event_note</mat-icon>Projects 
+        </a>
+        <a mat-list-item routerLink="/customer/messages" routerLinkActive="portal-menu--active">
+          <mat-icon matListIcon>email</mat-icon>
+          Messages 
+        </a>
+     </mat-nav-list>
+
+    <portal-user-menu></portal-user-menu>
+    <portal-language-menu fxHide fxShow.gt-sm></portal-language-menu>
+    <button class="portal-notification" [ngClass]="{ 'portal-notification-active': !notificationsChecked }" mat-icon-button (click)="openRightSidenav()">
+      <mat-icon>notifications</mat-icon>
+      <span *ngIf="!notificationsChecked" class="portal-notification-badge">2</span>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
