@@ -1,0 +1,52 @@
+<mat-card style=margin:8px;>
+
+  <div>
+      <div fxFlex></div>
+      <a mat-raised-button color="primary" routerLink="/developer/invitations/invite">
+        <mat-icon matListIcon>info</mat-icon> 
+        <span i18n>Invite</span>
+      </a>
+  </div>
+
+  <mat-table [dataSource]="invitations$ | async">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef i18n>Name</mat-header-cell>
+      <mat-cell *matCellDef="let invitation">{{ invitation.name }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef i18n>Email</mat-header-cell>
+      <mat-cell *matCellDef="let invitation">{{ invitation.email }}</mat-cell>
+    </ng-container>
+
+    <!-- Customers Column -->
+    <ng-container matColumnDef="created_at">
+      <mat-header-cell *matHeaderCellDef i18n>Invited Date</mat-header-cell>
+      <mat-cell *matCellDef="let invitation">{{ invitation.created_at }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="accepted">
+      <mat-header-cell *matHeaderCellDef i18n>Status</mat-header-cell>
+      <mat-cell *matCellDef="let invitation">
+        <span *ngIf="invitation.accepted">Accepted</span>
+        <span *ngIf="!invitation.accepted">Invitation Pending</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="info">
+        <mat-header-cell *matHeaderCellDef i18n></mat-header-cell>
+        <mat-cell *matCellDef="let invitation">
+          {{invitation.info}}
+        </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+</mat-table>
+
+
+<rbo-pagination [target]="target" [page]="page$ | async"></rbo-pagination>
+
+</mat-card>

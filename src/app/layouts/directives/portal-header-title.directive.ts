@@ -1,6 +1,6 @@
 import { Directive, ElementRef, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { LayoutService } from './../layout.service';
+import { LayoutService } from '../layout.service';
 
 @Directive({
   selector: '[portalHeaderTitle]'

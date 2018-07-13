@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Store } from '@ngrx/store';
 
-import { LayoutService } from './../layout.service';
+import { LayoutService } from '../layout.service';
 import { GetStatus, LogOut } from '../../developer/store/actions/auth.actions';
 import { AppState, selectAuthState } from '../../developer/store/app.states';
 import { Observable } from 'rxjs/Observable';

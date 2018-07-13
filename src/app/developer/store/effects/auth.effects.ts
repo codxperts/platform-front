@@ -26,7 +26,9 @@ export class AuthEffects {
     private actions: Actions,
     private authService: AuthService,
     private router: Router,
-  ) {}
+  ) {
+    console.log('auth eff');
+  }
 
   // effects go here
   @Effect()
@@ -50,6 +52,7 @@ export class AuthEffects {
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap((user) => {
         localStorage.setItem('token', user.payload.token);
+        new GetStatus();
         this.router.navigateByUrl('/developer');
     })
 );

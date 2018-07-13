@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 import { Subscription, timer, BehaviorSubject } from 'rxjs';
 
-import { LayoutService } from './../../../../layouts/layout.service';
+import { LayoutService } from '../../../../layouts/layout.service';
 
 @Component({
   selector: 'portal-dashboard-new-customers',

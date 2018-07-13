@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 import { DeveloperLayoutComponent } from '../layouts/developer-layout/developer-layout.component';
-import { DashboardComponent } from '../developer/components/dashboard/dashboard.component';
-import { ProfileComponent } from '../developer/components/profile/profile.component';
-import { SigninComponent } from '../developer/components/signin/signin.component';
-import { ColleaguesComponent } from '../developer/components/colleagues/colleagues.component';
-import { HomeComponent } from '../developer/components/home/home.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { ColleaguesComponent } from './components/colleagues/colleagues.component';
+import { HomeComponent } from './components/home/home.component';
 
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 
@@ -58,6 +58,10 @@ const routes: Routes = [
       {
         path: 'messages',
         loadChildren: '../shared/messages/messages.module#MessagesModule'
+      },
+      {
+        path: 'invitations',
+        loadChildren: './invitation/invitation.module#InvitationModule'
       }
     ],
   }

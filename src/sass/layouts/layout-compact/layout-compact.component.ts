@@ -2,7 +2,7 @@ import { Subscription } from 'rxjs';
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { LayoutService } from './../layout.service';
+import { LayoutService } from '../layout.service';
 
 @Component({
   selector: 'portal-layout-compact',

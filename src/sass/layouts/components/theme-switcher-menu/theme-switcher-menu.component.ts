@@ -1,4 +1,4 @@
-import { LayoutService } from './../../layout.service';
+import { LayoutService } from '../../layout.service';
 import { Component, Inject, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 

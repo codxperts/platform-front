@@ -2,7 +2,7 @@ import { MatSidenav } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LayoutService } from './../layout.service';
+import { LayoutService } from '../layout.service';
 
 @Component({
   selector: 'portal-layout-funky',

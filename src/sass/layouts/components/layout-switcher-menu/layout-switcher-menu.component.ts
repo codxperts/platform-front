@@ -1,4 +1,4 @@
-import { LayoutService } from './../../layout.service';
+import { LayoutService } from '../../layout.service';
 import { Component } from '@angular/core';
 
 @Component({

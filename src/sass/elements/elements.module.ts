@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { routing } from './elements-routing.module';
 
-import { SharedModule } from './../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { CheckboxExample1Component } from './include-examples/checkbox-example-1/checkbox-example-1.component';

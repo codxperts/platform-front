@@ -64,6 +64,8 @@
 @import 'user-interface/colors/_colors-theme';
 @import 'user-interface/typography/_typography-theme';
 
+@import "~ngx-toastr/toastr.css";
+
 @mixin portal-theme($theme, $typography) {
   /* Portal Typography */
   @include portal-typography();

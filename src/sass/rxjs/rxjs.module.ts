@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { routing } from './rxjs-routing.module';
-import { SharedModule } from './../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { IntroductionComponent } from './introduction/introduction.component';
 import { SubjectExampleComponent } from './subject-example/subject-example.component';

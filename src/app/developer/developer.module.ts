@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { DeveloperRoutingModule } from './developer-routing.module';
 
 import { LayoutsModule } from '../layouts/layouts.module';
-import { SharedModule } from './../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -16,20 +19,22 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { AuthEffects } from './store/effects/auth.effects';
+
+import { DeveloperService } from './services/developer.service';
+import { DeveloperEffects } from './store/effects/developer.effects';
+
 import { reducers } from './store/app.states';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { TabbedChartWidgetComponent } from '../dashboards/analytics/components/tabbed-chart-widget/tabbed-chart-widget.component';
 import { ActiveUsersComponent } from '../dashboards/analytics/components/active-users/active-users.component';
 import { CommerceActiveUsersComponent } from '../dashboards/ecommerce/components/commerce-active-users/commerce-active-users.component';
 
-
 import {
   TokenInterceptor, ErrorInterceptor,
 } from './services/token.interceptor';
 import { ChartsModule } from 'ng2-charts';
+import { InvitationService } from './services/invitation.service';
+import { SearchSandboxService } from './services/searchSandbox.service';
 
 @NgModule({
   imports: [
@@ -39,7 +44,7 @@ import { ChartsModule } from 'ng2-charts';
     SharedModule,
     FormsModule,
     StoreModule.forRoot(reducers, {}),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, DeveloperEffects]),
     HttpClientModule,
     ChartsModule,
   ],
@@ -64,7 +69,10 @@ import { ChartsModule } from 'ng2-charts';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
       multi: true
-    }
+    },
+    DeveloperService,
+    InvitationService,
+    SearchSandboxService
   ]
 })
 export class DeveloperModule { }

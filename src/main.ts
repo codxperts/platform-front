@@ -3,6 +3,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+import { Store } from '@ngrx/store';
 
 // use the require method provided by webpack
 declare const require;
@@ -35,3 +36,4 @@ if (null !== localeId) {
 
 platformBrowserDynamic().bootstrapModule(AppModule, compilerOptions)
   .catch(err => console.log(err));
+

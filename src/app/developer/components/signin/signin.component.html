@@ -30,16 +30,24 @@
 
             <mat-form-field>
               <input matInput formControlName="email" placeholder="Email Address" >
+              <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                  This is a required field
+              </mat-error>
+              <mat-error *ngIf="loginForm.get('email').hasError('email')">
+                  Invalid email address
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field>
               <input matInput type="password" formControlName="password" placeholder="Password" >
+              <mat-error *ngIf="loginForm.get('password').hasError('server')">
+                  {{ loginForm.get('password').getError('server') }}
+              </mat-error>
             </mat-form-field>
 
-            <div>{{errorMessage}}</div>
-
-            <div fxLayout="column" fxLayoutGap="16px">
+            <div fxLayout="column" fxLayoutGap="16px" style=margin-top:10px;>
               <div fxLayout="row" fxLayoutGap="16px" fxLayout.lt-md="column">
+                
                 <button mat-raised-button i18n
                   type="submit"
                   fxFlex="50%"

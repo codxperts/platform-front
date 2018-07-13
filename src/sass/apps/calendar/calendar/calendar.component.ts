@@ -3,7 +3,7 @@ import { MatSelectChange, MatDialog, MatSnackBar } from '@angular/material';
 import * as $ from 'jquery';
 import { CalendarComponent } from 'ap-angular-fullcalendar';
 
-import { CalendarDialogComponent } from './../calendar-dialog/calendar-dialog.component';
+import { CalendarDialogComponent } from '../calendar-dialog/calendar-dialog.component';
 import * as moment from 'moment';
 
 @Component({

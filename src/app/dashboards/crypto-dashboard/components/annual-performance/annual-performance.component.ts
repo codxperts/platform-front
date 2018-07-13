@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
-import { LayoutService } from './../../../../layouts/layout.service';
+import { LayoutService } from '../../../../layouts/layout.service';
 
 @Component({
   selector: 'portal-dashboard-annual-performance',

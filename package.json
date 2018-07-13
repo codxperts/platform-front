@@ -13,7 +13,7 @@
   "private": true,
   "dependencies": {
     "@agm/core": "^1.0.0-beta.3",
-    "@angular/animations": "6.0.5",
+    "@angular/animations": "^6.0.5",
     "@angular/cdk": "^6.1.0",
     "@angular/common": "6.0.5",
     "@angular/compiler": "6.0.5",
@@ -41,6 +41,8 @@
     "ng2-charts": "^1.6.0",
     "ngx-moment": "^3.0.1",
     "ngx-quill-editor": "git+https://github.com/oxygenna/ngx-quill-editor.git",
+    "ngx-spinner": "^6.0.0",
+    "ngx-toastr": "^8.8.0",
     "rxjs": "^6.1.0",
     "rxjs-compat": "^6.1.0",
     "web-animations-js": "^2.3.1",

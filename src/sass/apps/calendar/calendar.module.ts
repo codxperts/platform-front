@@ -2,7 +2,7 @@ import { CalendarModule } from 'ap-angular-fullcalendar';
 import { NgModule } from '@angular/core';
 
 
-import { SharedModule } from './../../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 import { AppCalendarComponent } from './calendar/calendar.component';
 import { CalendarDialogComponent } from './calendar-dialog/calendar-dialog.component';

@@ -2,7 +2,7 @@ import { map } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { timer, Subscription, BehaviorSubject } from 'rxjs';
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
-import { LayoutService } from './../../../../layouts/layout.service';
+import { LayoutService } from '../../../../layouts/layout.service';
 
 @Component({
   selector: 'portal-dashboard-doughnut-chart-widget',

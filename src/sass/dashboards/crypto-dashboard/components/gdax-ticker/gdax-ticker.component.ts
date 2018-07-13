@@ -4,7 +4,7 @@ import { BehaviorSubject, Subscription, Observable } from 'rxjs';
 import { WebSocketSubject } from 'rxjs/observable/dom/WebSocketSubject';
 import { filter, switchMap } from 'rxjs/operators';
 
-import { environment } from './../../../../../environments/environment';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'dashboard-gdax-ticker',

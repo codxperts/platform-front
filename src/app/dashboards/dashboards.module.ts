@@ -5,7 +5,7 @@ import { AgmCoreModule } from '@agm/core';
 import { ChartsModule } from 'ng2-charts';
 
 // Shared
-import { SharedModule } from './../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { routing } from './dashboards-routing.module';
 
 // Dashboards

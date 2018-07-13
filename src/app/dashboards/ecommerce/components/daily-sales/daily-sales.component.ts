@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import * as moment from 'moment';
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 
-import { LayoutService } from './../../../../layouts/layout.service';
+import { LayoutService } from '../../../../layouts/layout.service';
 
 @Component({
   selector: 'portal-dashboard-daily-sales',

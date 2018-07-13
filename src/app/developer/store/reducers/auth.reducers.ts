@@ -8,17 +8,26 @@ export interface State {
   user: User | null;
   // error message
   errorMessage: string | null;
+  pending: boolean;
 }
 
 export const initialState: State = {
     isAuthenticated: false,
     user: null,
     errorMessage: null,
+    pending: false
   };
 
   export function reducer(state = initialState, action: All): State {
     console.log(action);
     switch (action.type) {
+      case AuthActionTypes.LOGIN: {
+        return {
+          ...state,
+          pending: true,
+          errorMessage: null
+        };
+      }
       case AuthActionTypes.LOGIN_SUCCESS: {
         return {
           ...state,
@@ -27,13 +36,15 @@ export const initialState: State = {
             token: action.payload.token,
             email: action.payload.email
           },
-          errorMessage: null
+          errorMessage: null,
+          pending: false
         };
       }
       case AuthActionTypes.LOGIN_FAILURE: {
         return {
           ...state,
-          errorMessage: 'Incorrect email and/or password.'
+          errorMessage: 'Incorrect email and/or password.',
+          pending: false
         };
       }
       case AuthActionTypes.LOGOUT: {
