@@ -30,11 +30,13 @@ import { ActiveUsersComponent } from '../dashboards/analytics/components/active-
 import { CommerceActiveUsersComponent } from '../dashboards/ecommerce/components/commerce-active-users/commerce-active-users.component';
 
 import {
-  TokenInterceptor, ErrorInterceptor,
+  TokenInterceptor,
+  ErrorInterceptor
 } from './services/token.interceptor';
 import { ChartsModule } from 'ng2-charts';
 import { InvitationService } from './services/invitation.service';
 import { SearchSandboxService } from './services/searchSandbox.service';
+import { InvitationEffects } from './store/effects/invitation.effects';
 
 @NgModule({
   imports: [
@@ -44,9 +46,9 @@ import { SearchSandboxService } from './services/searchSandbox.service';
     SharedModule,
     FormsModule,
     StoreModule.forRoot(reducers, {}),
-    EffectsModule.forRoot([AuthEffects, DeveloperEffects]),
+    EffectsModule.forRoot([AuthEffects, DeveloperEffects, InvitationEffects]),
     HttpClientModule,
-    ChartsModule,
+    ChartsModule
   ],
   declarations: [
     DashboardComponent,
@@ -55,7 +57,7 @@ import { SearchSandboxService } from './services/searchSandbox.service';
     ColleaguesComponent,
     SignUpComponent,
     HomeComponent,
-    TabbedChartWidgetComponent,
+    TabbedChartWidgetComponent
   ],
   providers: [
     AuthService,
@@ -75,4 +77,4 @@ import { SearchSandboxService } from './services/searchSandbox.service';
     SearchSandboxService
   ]
 })
-export class DeveloperModule { }
+export class DeveloperModule {}

@@ -1,11 +1,11 @@
 <mat-card style=margin:8px;>
 
   <div>
-      <div fxFlex></div>
-      <a mat-raised-button color="primary" routerLink="/developer/invitations/invite">
-        <mat-icon matListIcon>info</mat-icon> 
-        <span i18n>Invite</span>
-      </a>
+    <div fxFlex></div>
+    <a mat-raised-button color="primary" routerLink="/developer/invitations/invite">
+      <mat-icon matListIcon>info</mat-icon>
+      <span i18n>Invite</span>
+    </a>
   </div>
 
   <mat-table [dataSource]="invitations$ | async">
@@ -35,18 +35,21 @@
     </ng-container>
 
     <ng-container matColumnDef="info">
-        <mat-header-cell *matHeaderCellDef i18n></mat-header-cell>
-        <mat-cell *matCellDef="let invitation">
-          {{invitation.info}}
-        </mat-cell>
-      </ng-container>
+      <mat-header-cell *matHeaderCellDef i18n></mat-header-cell>
+      <mat-cell *matCellDef="let invitation">
+        {{invitation.info}}
+      </mat-cell>
+    </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;">
     </mat-row>
-</mat-table>
+  </mat-table>
 
 
-<rbo-pagination [target]="target" [page]="page$ | async"></rbo-pagination>
+  <rbo-pagination [target]="target" [page]="page$ | async"></rbo-pagination>
 
+  <pre>
+  {{page$ | json }}
+</pre>
 </mat-card>

@@ -3,12 +3,12 @@ import { Store } from '@ngrx/store';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
-import { AppState, selectDeveloperState } from '../../store/app.states';
-import { InviteToFriend } from '../../store/actions/developer.actions';
+import { AppState, selectDeveloperState, selectInvitationState } from '../../store/app.states';
+import { InviteToFriend } from '../../store/actions/invitation.actions';
 import { Observable } from 'rxjs/Observable';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
-import { LayoutService } from './../../../layouts/layout.service';
+import { LayoutService } from '../../../layouts/layout.service';
 
 @Component({
   selector: 'app-invite',
@@ -32,7 +32,7 @@ export class InviteComponent implements OnInit {
     private router: Router,
     public layoutService: LayoutService
   ) { 
-    this.getState = this.store.select(selectDeveloperState);
+    this.getState = this.store.select(selectInvitationState);
     this.layoutService.setLoader(true);
   }
 

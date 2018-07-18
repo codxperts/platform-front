@@ -14,8 +14,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./developer-layout.component.scss']
 })
 export class DeveloperLayoutComponent implements OnInit {
-
-/**
+  /**
    * Stores if left sidenav is open.
    */
   leftSidenavOpen: boolean;
@@ -47,13 +46,13 @@ export class DeveloperLayoutComponent implements OnInit {
     this.calculateSidenavStatus();
 
     // Subscribe to changes in screen size to change sidenav behavior.
-    this.mediaSubscription = this.media
-      .subscribe((change: MediaChange) => this.calculateSidenavStatus());
+    this.mediaSubscription = this.media.subscribe((change: MediaChange) =>
+      this.calculateSidenavStatus()
+    );
 
-    this.getUserState.subscribe((state) => this.user = state.user);
+    this.getUserState.subscribe(state => (this.user = state.user));
 
-    this.store.dispatch(new GetStatus);
-
+    this.store.dispatch(new GetStatus());
   }
 
   ngOnDestroy(): void {
@@ -70,8 +69,6 @@ export class DeveloperLayoutComponent implements OnInit {
   }
 
   logOut() {
-    this.store.dispatch(new LogOut);
+    this.store.dispatch(new LogOut());
   }
-
 }
-

@@ -15,18 +15,24 @@ export class SearchSandboxService {
   page$: Observable<Page> = this.store.select(state => state.search.page);
   pageNumber$: Subject<number> = new ReplaySubject<number>();
 
-  constructor(private searchService: InvitationService,
-              private store: Store<AppState>) {
-
-    const pageNumberChanged$ = Observable.combineLatest(this.pageNumber$, this.page$)
-      .filter(([ pageNumber, page ]) => pageNumber !== null && ( !page || page.number !== pageNumber))
-      .map(([ pageNumber, page ]) => pageNumber ? pageNumber : 1)
+  constructor(
+    private searchService: InvitationService,
+    private store: Store<AppState>
+  ) {
+    const pageNumberChanged$ = Observable.combineLatest(
+      this.pageNumber$,
+      this.page$
+    )
+      .filter(
+        ([pageNumber, page]) =>
+          pageNumber !== null && (!page || page.number !== pageNumber)
+      )
+      .map(([pageNumber, page]) => (pageNumber ? pageNumber : 1))
       .distinctUntilChanged();
 
     this.invitations$ = pageNumberChanged$
       .switchMap(page => this.searchService.searchForMovie('james bond', page))
       .do(response => {
-        console.info(response);
         this.store.dispatch(new SetSearch(response.invitations, response.page));
       })
       .map(result => result.invitations)

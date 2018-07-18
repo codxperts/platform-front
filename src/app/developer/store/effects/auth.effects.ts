@@ -11,79 +11,80 @@ import { tap } from 'rxjs/operators';
 
 import { AuthService } from '../../services/auth.service';
 import {
-    AuthActionTypes,
-    LogIn, LogInSuccess, LogInFailure,
-    SignUp, SignUpSuccess, SignUpFailure,
-    LogOut,
-    GetStatus, StatusSuccess
-  } from '../actions/auth.actions';
-
+  AuthActionTypes,
+  LogIn,
+  LogInSuccess,
+  LogInFailure,
+  SignUp,
+  SignUpSuccess,
+  SignUpFailure,
+  LogOut,
+  GetStatus,
+  StatusSuccess
+} from '../actions/auth.actions';
 
 @Injectable()
 export class AuthEffects {
-
   constructor(
     private actions: Actions,
     private authService: AuthService,
-    private router: Router,
-  ) {
-    console.log('auth eff');
-  }
+    private router: Router
+  ) {}
 
   // effects go here
   @Effect()
-    LogIn: Observable<any> = this.actions
+  public LogIn: Observable<any> = this.actions
     .ofType(AuthActionTypes.LOGIN)
     .map((action: LogIn) => action.payload)
     .switchMap(payload => {
-        return this.authService.logIn(payload.email, payload.password)
-        .map((user) => {
-            console.log(user);
-            return new LogInSuccess({token: user.token, email: payload.email});
+      return this.authService
+        .logIn(payload.email, payload.password)
+        .map(user => {
+          return new LogInSuccess({ token: user.token, email: payload.email });
         })
-        .catch((error) => {
-            console.log(error);
-            return Observable.of(new LogInFailure({ error: error }));
+        .catch(error => {
+          console.log(error);
+          return Observable.of(new LogInFailure({ error: error }));
         });
-  });
+    });
 
   @Effect({ dispatch: false })
-    LogInSuccess: Observable<any> = this.actions.pipe(
+  public LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
-    tap((user) => {
-        localStorage.setItem('token', user.payload.token);
-        new GetStatus();
-        this.router.navigateByUrl('/developer');
+    tap(user => {
+      localStorage.setItem('token', user.payload.token);
+      new GetStatus();
+
+      this.router.navigateByUrl('/developer');
     })
-);
-
-@Effect({ dispatch: false })
-LogInFailure: Observable<any> = this.actions.pipe(
-  ofType(AuthActionTypes.LOGIN_FAILURE)
-);
-
-@Effect({ dispatch: false })
-public LogOut: Observable<any> = this.actions.pipe(
-  ofType(AuthActionTypes.LOGOUT),
-  tap((user) => {
-    localStorage.removeItem('token');
-    this.router.navigateByUrl('/developer/sign-in');
-  })
-);
-
-@Effect()
-GetStatus: Observable<any> = this.actions
-  .ofType(AuthActionTypes.GET_STATUS)
-  .map((action: GetStatus) => action)
-  .switchMap(payload => {
-    return this.authService.getStatus().map((user) => {
-      return new StatusSuccess(user);
-  });
-  });
+  );
 
   @Effect({ dispatch: false })
-  StatusSuccess: Observable<any> = this.actions.pipe(
-    ofType(AuthActionTypes.STATUS_SUCCESS)
-  );  
+  public LogInFailure: Observable<any> = this.actions.pipe(
+    ofType(AuthActionTypes.LOGIN_FAILURE)
+  );
 
+  @Effect({ dispatch: false })
+  public LogOut: Observable<any> = this.actions.pipe(
+    ofType(AuthActionTypes.LOGOUT),
+    tap(user => {
+      localStorage.removeItem('token');
+      this.router.navigateByUrl('/developer/sign-in');
+    })
+  );
+
+  @Effect()
+  public GetStatus: Observable<any> = this.actions
+    .ofType(AuthActionTypes.GET_STATUS)
+    .map((action: GetStatus) => action)
+    .switchMap(payload => {
+      return this.authService.getStatus().map(user => {
+        return new StatusSuccess(user);
+      });
+    });
+
+  @Effect({ dispatch: false })
+  public StatusSuccess: Observable<any> = this.actions.pipe(
+    ofType(AuthActionTypes.STATUS_SUCCESS)
+  );
 }
