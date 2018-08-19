@@ -1,0 +1,26 @@
+<mat-toolbar class="portal-toolbar mat-elevation-z6" [ngClass]="{ 'portal-transparent-toolbar': transparent }">
+    <mat-toolbar-row>
+
+      <span fxFlex></span>
+  
+      <mat-nav-list class="inline-nav">
+          <a mat-list-item routerLink="/dashboard" routerLinkActive="portal-menu--active">
+            <mat-icon matListIcon>palette</mat-icon>
+            Dashboard
+          </a>
+          <a mat-list-item routerLink="/messages" routerLinkActive="portal-menu--active">
+            <mat-icon matListIcon>email</mat-icon>
+            Messages 
+          </a>
+       </mat-nav-list>
+  
+       <user-menu [user]="userData" (logOutFlag)="logOut($event)"></user-menu>
+
+      <button class="portal-notification" [ngClass]="{ 'portal-notification-active': !notificationsChecked }" mat-icon-button (click)="openRightSidenav()">
+        <mat-icon>notifications</mat-icon>
+        <span *ngIf="!notificationsChecked" class="portal-notification-badge">2</span>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  

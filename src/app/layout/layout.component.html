@@ -1,0 +1,23 @@
+<mat-sidenav-container fxFlexFill>
+
+  <!-- main content -->
+  <div fxLayout="column" fxFlexFill>
+    <!-- top toolbar -->
+
+    <portal-layout-loader></portal-layout-loader>
+    
+    <app-horizontal-menu [userData]="user$ | async"></app-horizontal-menu>
+
+    <div fxLayout="column" fxFlex="nogrow noshrink" class="portal-classic-content-wrapper portal-content-bg">
+      <div fxFlexFill class="portal-classic-content" portalScrollTop>
+        <div style="padding:16px;">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    
+  </div>
+</mat-sidenav-container>
+  
+  

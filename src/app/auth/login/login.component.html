@@ -1,0 +1,71 @@
+<div class="portal-login-container portal-primary-bg" fxLayoutAlign="center center" fxLayoutAlign.lt-sm="none">
+      
+  <mat-card class="portal-login-card mat-elevation-z"
+    fxFlex="100"
+    fxFlex.md="80"
+    fxFlex.gt-md="60"
+    fxLayout.lt-sm="column">
+    <mat-card-content
+      fxFlex="auto"
+      fxFlex.gt-sm="50%"
+      fxLayout="column"
+      fxLayoutAlign="space-between none"
+      class="portal-primary-bgx" style="padding: 0;">
+      <div>
+          <img style="width:100%;height:auto;" class="portal-login-card__logo" src="assets/images/platform-login.jpg"/>
+        <div style="padding:16px;" class="portal-primary-bxg">
+          <p i18n>Welcome to our admin panel. Please login using the form or register for a new account using the button below.</p>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-content
+      fxFlex="auto"
+      fxFlex.gt-sm="50%"
+      fxLayout="column"
+      fxLayoutAlign="space-between none" class="login-section">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field>
+          <input matInput formControlName="email" placeholder="Email Address" >
+          <mat-error *ngIf="loginForm.get('email').hasError('required')">
+              This is a required field
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email').hasError('email')">
+              Invalid email address
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="password" formControlName="password" placeholder="Password" >
+          <mat-error *ngIf="loginForm.get('password').hasError('server')">
+              {{ loginForm.get('password').getError('server') }}
+          </mat-error>
+        </mat-form-field>
+
+        <div fxLayout="column" fxLayoutGap="16px" style=margin-top:10px;>
+          <div fxLayout="row" fxLayoutGap="16px" fxLayout.lt-md="column" >
+            
+            <button mat-raised-button i18n 
+              type="submit"
+              fxFlex="50%"
+              fxFlex.lt-md="none"
+              color="primary"
+              [disabled]="!loginForm.valid">
+              Login
+            </button>
+
+            <a mat-button i18n
+              fxFlex="50%"
+              fxFlex.lt-md="none">
+              Forgot Password?
+            </a>
+          </div>
+
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
