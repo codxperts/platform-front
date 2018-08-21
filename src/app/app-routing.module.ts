@@ -4,7 +4,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthGuard } from './auth/auth.guard';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -16,21 +15,21 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule',
+        loadChildren: './dashboard/dashboard.module#DashboardModule'
       },
       {
         path: 'invitations',
-        loadChildren: './invitation/invitation.module#InvitationModule',
+        loadChildren: './invitation/invitation.module#InvitationModule'
       }
-    ],
+    ]
   },
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginComponent
   },
   {
-      path: "**",
-      redirectTo: 'login'
+    path: '**',
+    redirectTo: 'login'
   }
 ];
 // [
@@ -55,7 +54,8 @@ export class AppRoutingModule {
     /**
      * This allows us to switch layouts using the layout switcher.
      */
-    const baseRoute = this.router.config.find(route => route.data !== undefined && route.data.base === true);
-  
+    const baseRoute = this.router.config.find(
+      route => route.data !== undefined && route.data.base === true
+    );
   }
 }

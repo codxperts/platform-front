@@ -8,14 +8,20 @@ import { EffectsModule } from '@ngrx/effects';
 import { InvitationEffects } from './invitation.effects';
 import { StoreModule } from '@ngrx/store';
 import * as fromInvitation from './invitation.reducer';
+import { PaginationModule } from '../shared/pagination/pagination.module';
+import { InvitationService } from './invitation.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    PaginationModule,
+    SharedModule,
     InvitationsRoutingModule,
-    EffectsModule.forFeature([InvitationEffects]),
-    StoreModule.forFeature('invitation', fromInvitation.reducer)
+    StoreModule.forFeature('invitation', fromInvitation.invitationReducer),
+    EffectsModule.forFeature([InvitationEffects])
   ],
-  declarations: [ListComponent, CreateComponent]
+  declarations: [ListComponent, CreateComponent],
+  providers: [InvitationService]
 })
-export class InvitationModule { }
+export class InvitationModule {}

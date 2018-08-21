@@ -5,17 +5,21 @@ import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: ListComponent,
+    path: 'invite',
+    component: CreateComponent
   },
   {
-    path: 'create',
-    component: CreateComponent,
-  } 
+    path: ':page',
+    component: ListComponent
+  },
+  {
+    path: '',
+    component: ListComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class InvitationsRoutingModule { }
+export class InvitationsRoutingModule {}

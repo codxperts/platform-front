@@ -1,5 +1,5 @@
 <div class="portal-login-container portal-primary-bg" fxLayoutAlign="center center" fxLayoutAlign.lt-sm="none">
-      
+   
   <mat-card class="portal-login-card mat-elevation-z"
     fxFlex="100"
     fxFlex.md="80"
@@ -24,6 +24,7 @@
       fxFlex.gt-sm="50%"
       fxLayout="column"
       fxLayoutAlign="space-between none" class="login-section">
+      
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
         <mat-form-field>
@@ -43,7 +44,13 @@
           </mat-error>
         </mat-form-field>
 
+        <div *ngIf="isPending$ | async">
+            <p>Signin in...</p>
+          <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+        </div>
+
         <div fxLayout="column" fxLayoutGap="16px" style=margin-top:10px;>
+
           <div fxLayout="row" fxLayoutGap="16px" fxLayout.lt-md="column" >
             
             <button mat-raised-button i18n 

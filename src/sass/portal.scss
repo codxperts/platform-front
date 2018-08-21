@@ -1,4 +1,5 @@
 /* Portal Global  */
+
 @import 'typography';
 @import 'palette';
 @import 'theming';
@@ -11,31 +12,23 @@
 @import 'theme-icon';
 @import 'loader';
 @import 'ie';
-
-
+@import '~ngx-toastr/toastr.css';
+@import 'modules/invitations';
 @mixin portal-theme($theme, $typography) {
   /* Portal Typography */
   @include portal-typography();
-
   /* Portal Loader */
   @include portal-loader($theme);
-
   /* Menu Utility Classes */
   @include portal-menus($theme);
-
   /* Input Classes */
   @include portal-inputs();
-
   /* Toolbar Classes */
   @include portal-toolbar($theme);
-
   /* Coloured background classes */
   @include portal-backgrounds($theme);
-
   /* Hide scrollbars classes */
   @include portal-scrollbars();
-
   /* RTL */
   @include portal-rtl();
-
 }

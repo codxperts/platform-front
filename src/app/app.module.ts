@@ -15,56 +15,65 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from './shared/shared.module';
-import { LayoutComponent } from './layout/layout.component';
 import { LayoutModule } from './layout/layout.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     AuthModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([]),
-    SharedModule,
+    SharedModule.forRoot(),
+    ToastrModule.forRoot(),
     LayoutModule
   ],
-  bootstrap: [
-    AppComponent
-  ],
-  exports: [
-    SharedModule
-  ]
+  exports: [SharedModule],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(
-      private matIconRegistry: MatIconRegistry,
-      private sanitizer: DomSanitizer
-    ) {
+    private matIconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
+  ) {
     // Register Font Awesome
     matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
 
     // Register layout icon SVGs
-    matIconRegistry.addSvgIcon('classic',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/classic.svg')
+    matIconRegistry.addSvgIcon(
+      'classic',
+      sanitizer.bypassSecurityTrustResourceUrl(
+        'assets/images/icons/classic.svg'
+      )
     );
-    matIconRegistry.addSvgIcon('toolbar',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/toolbar.svg')
+    matIconRegistry.addSvgIcon(
+      'toolbar',
+      sanitizer.bypassSecurityTrustResourceUrl(
+        'assets/images/icons/toolbar.svg'
+      )
     );
-    matIconRegistry.addSvgIcon('compact',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/compact.svg')
+    matIconRegistry.addSvgIcon(
+      'compact',
+      sanitizer.bypassSecurityTrustResourceUrl(
+        'assets/images/icons/compact.svg'
+      )
     );
-    matIconRegistry.addSvgIcon('boxed',
+    matIconRegistry.addSvgIcon(
+      'boxed',
       sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/boxed.svg')
     );
-    matIconRegistry.addSvgIcon('funky',
+    matIconRegistry.addSvgIcon(
+      'funky',
       sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/funky.svg')
     );
-    matIconRegistry.addSvgIcon('tabbed',
+    matIconRegistry.addSvgIcon(
+      'tabbed',
       sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/tabbed.svg')
     );
   }

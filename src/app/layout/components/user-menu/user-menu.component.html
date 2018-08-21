@@ -4,20 +4,24 @@
 </a>
 <mat-menu #userDetailsMenu="matMenu" classList="portal-menu-no-padding">
   <div class="portal-user-menu-header" fxLayout="row" fxLayoutAlign=" center">
-    <img class="portal-user-menu-header__avatar" src="assets/images/layouts/avatar.png" alt="Brian"/>
+    <img class="portal-user-menu-header__avatar" src="assets/images/layouts/avatar.png" alt="Brian" />
     <div class="portal-user-menu-header__details" fxLayout="column" fxLayoutAlign="center start">
       <h2>{{ user?.name || ''}}</h2>
       <h3>Web Developer</h3>
     </div>
   </div>
   <mat-nav-list class="portal-user-menu-list">
-    <a mat-list-item routerLink="/developer/me">
+    <a mat-list-item routerLink="/me">
       <mat-icon matListIcon>account_circle</mat-icon>
       <span i18n>My Profile</span>
     </a>
-    <a mat-list-item routerLink="/developer/invitations/invite">
+    <a mat-list-item routerLink="/invitations/invite">
       <mat-icon matListIcon>info</mat-icon>
       <span i18n>Invite</span>
+    </a>
+    <a mat-list-item routerLink="/invitations">
+      <mat-icon matListIcon>info</mat-icon>
+      <span i18n>Invitations</span>
     </a>
     <a mat-list-item>
       <mat-icon matListIcon>notifications</mat-icon>

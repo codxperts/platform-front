@@ -11,17 +11,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-
   user$: Observable<object>;
 
-  constructor(private store: Store<AppState>) { 
-    this.store.dispatch(new UserDetails());
-  }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    
+    this.store.dispatch(new UserDetails());
 
     this.user$ = this.store.pipe(select(user));
   }
-
 }

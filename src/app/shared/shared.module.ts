@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -13,7 +13,7 @@ declare var hljs: any;
   imports: [
     CommonModule,
     HttpModule,
-    HttpClientModule,
+    // HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
@@ -22,7 +22,7 @@ declare var hljs: any;
   exports: [
     CommonModule,
     HttpModule,
-    HttpClientModule,
+    // HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
@@ -30,10 +30,7 @@ declare var hljs: any;
   ]
 })
 export class SharedModule {
-  constructor() {
-    hljs.registerLanguage('typescript', require('highlight.js/lib/languages/typescript'));
-    hljs.registerLanguage('scss', require('highlight.js/lib/languages/scss'));
-    hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
+  static forRoot(): ModuleWithProviders {
+    return { ngModule: SharedModule };
   }
 }
-

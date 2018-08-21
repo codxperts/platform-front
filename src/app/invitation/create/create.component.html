@@ -1,3 +1,75 @@
-<p>
-  create works!
-</p>
+<div class="portal-login-container" fxLayoutAlign="center center" fxLayoutAlign.lt-sm="none">
+
+  <mat-card class="portal-login-card mat-elevation-z" fxFlex="100" fxFlex.md="100" fxFlex.gt-md="100" fxLayout.lt-sm="column">
+    <mat-card-content fxFlex="auto" fxFlex.gt-sm="70%" fxLayout="column" fxLayoutAlign="space-between none" class="portal-primary-bg">
+      <div>
+        <mat-card-title fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <h1 i18n>Platform IT
+            <br/>
+            <small>Send invitation to a friend</small>
+          </h1>
+        </mat-card-title>
+        <div>
+          <p i18n>Welcome to our admin panel. Please login using the form or register for a new account using the button below.</p>
+        </div>
+
+        <div>
+          <h1>How It works..</h1>
+
+          <p i18n>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+          <h3>01) Lorem ipsum dolor sit amet, con</h3>
+
+          <h3>02) Louis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore</h3>
+
+          <h3>03) Lorem ipuis nostrud exercitation ullasit amet, con</h3>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-content fxFlex="auto" fxFlex.gt-sm="30%" fxLayout="column" fxLayoutAlign="space-between none">
+      <div class="stickey fixed-top" *ngIf="isLoading$ | async">
+        Sending invitation...
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <div>
+        <h2>Send invitation to a friend</h2>
+        <form [formGroup]="inviteForm" (ngSubmit)="onSubmit()">
+
+          <mat-form-field>
+            <input matInput type="text" formControlName="user" placeholder="Name" autocomplete="off">
+            <mat-error *ngIf="inviteForm.get('user').hasError('required')">
+              This is a required field
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput formControlName="email" placeholder="Email Address" autocomplete="off">
+            <mat-error *ngIf="inviteForm.get('email').hasError('required')">
+              This is a required field
+            </mat-error>
+            <mat-error *ngIf="inviteForm.get('email').hasError('email')">
+              Invalid email address
+            </mat-error>
+            <mat-error *ngIf="inviteForm.get('email').hasError('server')">
+              {{inviteForm.get('email').getError('server')}}
+            </mat-error>
+          </mat-form-field>
+
+          <div fxLayout="column" fxLayoutGap="20px" style=margin-top:20px;>
+            <div fxLayout="row" fxLayoutGap="20px" fxLayout.lt-md="column">
+              <button mat-raised-button i18n type="submit" fxFlex="100%" fxFlex.lt-md="none" color="primary" [disabled]="!inviteForm.valid">
+                Invite
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
